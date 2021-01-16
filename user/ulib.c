@@ -14,6 +14,19 @@ strcpy(char *s, const char *t)
   return os;
 }
 
+void strcat(char* dest, char* src){
+  char* res = dest + strlen(dest);
+
+  // append until you see null terminator
+  while(*src != '\0'){
+    *res++ = *src++;
+  }
+  // Place null terminator on resulting string
+  *res = '\0';
+
+  return res;
+}
+
 int
 strcmp(const char *p, const char *q)
 {
