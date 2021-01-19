@@ -14,7 +14,7 @@ strcpy(char *s, const char *t)
   return os;
 }
 
-void strcat(char* dest, char* src){
+char* strcat(char* dest, char* src){
   char* res = dest + strlen(dest);
 
   // append until you see null terminator
