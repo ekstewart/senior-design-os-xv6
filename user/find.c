@@ -74,7 +74,6 @@ void find(char* path, char* filename){
     // Add slash to show new level then increment pointer
     *p++ = '/';
     while(read(fd, &de, sizeof(de)) == sizeof(de)){
-      //printf("In while loop\n");  
       if(de.inum == 0)
         continue; 
       // Copy first 14(DIRSIZ) characters from de.name to p
@@ -85,14 +84,9 @@ void find(char* path, char* filename){
         printf("ls: cannot stat %s\n", buf);
         continue;
       }
-      //printf("Checking file type...\n");
       if(st.type==T_DIR && strcmp(fmtname(buf),".")!=0 && strcmp(fmtname(buf),"..")!=0){
-          //printf("Directory found...\nPassing in buf: %s\n",buf);
-          //printf("de.name: %s\n",de.name);
           find(buf,filename);
       }else if(st.type==T_FILE && strcmp(filename,fmtname(buf))==0){
-          //printf("strcmp(filename,fmtname(buf)) returns:%d", strcmp(filename,fmtname(buf)));
-          //printf("filename is: %s\nbuf is: %s\n",filename,fmtname(buf));
           printf("%s\n", buf);
       }
       
